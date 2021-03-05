@@ -4,20 +4,11 @@ function getRandomInt(max) { // chooses random number
 function roll(array){
     return array[getRandomInt(array.length)];
 }
-function assignRoll(idArray, number){
-    switch(number){
-        case 0:
-    }
-}
+
+
 function rebuildArray(array, removedElement){
     array = initializeElementInArray(array,removedElement);
-    let newArray = [];
-    for(let i = 0; i < array.length; i++){
-        if(array[i] !== undefined){
-            newArray.push(array[i]);
-        }
-    }
-    return newArray;
+    return removeUndefinedInArray(array);
 }
 function findPositionInArray(array,searchedVar){
     for(let i = 0; i < array.length; i++){
@@ -30,33 +21,53 @@ function initializeElementInArray(array,initializedElement){
     array[position] = undefined;
     return array;
 }
-//function rebuild array
-//function make random choice1
-//function ask if choices are acceptable
-//function print to console.
-//function ask which are unacceptable
+function removeUndefinedInArray(array){
+    let newArray = [];
+    for(let i = 0; i < array.length; i++){
+        if(array[i] !== undefined){
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
+function chooseWhichArray(number){
+    switch(number){
+        case 0:
+            return destinationArray;
+        case 1:
+            return restaurantArray;
+        case 2:
+            return transportationArray;
+        case 3:
+            return entertainmentArray;
+        default:
+            return console.error();
+    }
+}
+//function rebuild array DONE
+//function make random choice DONE
+//function ask if choices are acceptable TODO
+//function print to console. TODO
+//function ask which are unacceptable TODO
 //function
+//TODO Make array of booleans to run parallel with rollArray.
+//Array will flag which ones need to be rerolled.
 
 
 let destinationArray = ['Beach','Woods','Movie theater','Park'];
 let restaurantArray = ['McDonalds','Wendys','Arbys','Chipotle'];
 let transportationArray = ['Car','Bus','Rental','Uber'];
-let entertainmentArray = ['Play cards','Star watching','Painting','Eat snacks'];
+let entertainmentArray = ['Play cards','Watching the sun set','Painting','Eat snacks'];
 let rollArray = [];
 rollArray.length = 4;
 for(let i = 0; i < 4; i++){
-    switch(i){
-        case 0:
-            rollArray[i] = roll(destinationArray);
-            break;
-        case 1:
-            rollArray[i] = roll(restaurantArray);
-            break;
-        case 2:
-            rollArray[i] = roll(transportationArray);
-            break;
-        case 3:
-            rollArray[i] = roll(entertainmentArray);
-            break;
-    }
+    rollArray[i] = roll(chooseWhichArray(i));
+    console.log(rollArray[i]);
 }
+let acceptableMsg = `Are these results acceptable?\n
+ Destination:   ${rollArray[0]}\n
+ Restaurant:    ${rollArray[1]}\n
+ Transport:     ${rollArray[2]}\n
+ Entertainment: ${rollArray[3]}\n
+ Please reply with Yes or No.`;
+let acceptable = prompt(acceptableMsg);
