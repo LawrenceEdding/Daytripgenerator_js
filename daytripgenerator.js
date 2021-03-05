@@ -9,8 +9,29 @@ function assignRoll(idArray, number){
         case 0:
     }
 }
+function rebuildArray(array, removedElement){
+    array = initializeElementInArray(array,removedElement);
+    let newArray = [];
+    for(let i = 0; i < array.length; i++){
+        if(array[i] !== undefined){
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
+function findPositionInArray(array,searchedVar){
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === searchedVar)
+        return i;
+    }
+}
+function initializeElementInArray(array,initializedElement){
+    let position = findPositionInArray(array,initializedElement);
+    array[position] = undefined;
+    return array;
+}
 //function rebuild array
-//function make random choice
+//function make random choice1
 //function ask if choices are acceptable
 //function print to console.
 //function ask which are unacceptable
