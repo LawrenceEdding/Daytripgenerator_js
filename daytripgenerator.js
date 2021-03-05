@@ -4,8 +4,6 @@ function getRandomInt(max) { // chooses random number
 function roll(array){
     return array[getRandomInt(array.length)];
 }
-
-
 function rebuildArray(array, removedElement){
     array = initializeElementInArray(array,removedElement);
     return removeUndefinedInArray(array);
@@ -66,6 +64,15 @@ function makeArrayIntoString(array){
     }
     return string;
 }
+function showResults(array){//Void Function
+    let acceptableMsg = `Are these results acceptable?\n
+    Destination:   ${array[0]}\n
+    Restaurant:    ${array[1]}\n
+    Transport:     ${array[2]}\n
+    Entertainment: ${array[3]}\n
+    Please reply with Yes or No.`;
+   alert(acceptableMsg);
+}
 
 //function rebuild array DONE
 //function make random choice DONE
@@ -88,13 +95,7 @@ for(let i = 0; i < 4; i++){
     rollArray[i] = roll(chooseWhichArray(i));
     console.log(rollArray[i]);
 }
-let acceptableMsg = `Are these results acceptable?\n
- Destination:   ${rollArray[0]}\n
- Restaurant:    ${rollArray[1]}\n
- Transport:     ${rollArray[2]}\n
- Entertainment: ${rollArray[3]}\n
- Please reply with Yes or No.`;
-alert(acceptableMsg);
+showResults(rollArray);
 
 for(let i = 0; i < rollArray.length; i++){
     userInput = prompt(`Is ${rollArray[i]} acceptable? \n
