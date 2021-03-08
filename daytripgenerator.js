@@ -104,12 +104,6 @@ function userCorrectRoll(flag, roll){
     }
     return roll;
 }
-//function rebuild array DONE
-//function make random choice DONE
-//function ask if choices are acceptable DONE
-//function print to console. DONE
-//function ask which are unacceptable DONE
-//DOES NOT WORK IF INPUT IS NULL
 let userInput;
 let destinationArray = ['Beach','Woods','Movie theater','Park'];
 let restaurantArray = ['McDonalds','Wendys','Arbys','Chipotle'];
@@ -128,7 +122,6 @@ do{
         superArray[i] = rebuildArray(superArray[i],rollArray[i]);
     }
 }while(!isHappy(flagRollArray) && checkEmptyArray(superArray));
-//Apologize if not happy. can see based on which ones still end up false.
 rollArray = userCorrectRoll(flagRollArray,rollArray);
 
 console.log(showResults(rollArray));
